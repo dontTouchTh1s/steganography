@@ -17,10 +17,10 @@ namespace steganography
             }
             string binrary = sb.ToString();
 
-            List<Byte> binraryText = new List<byte>();
+            List<byte> binraryText = new List<byte>();
             foreach (char ch in binrary)
             {
-                String s = ch.ToString();
+                string s = ch.ToString();
                 binraryText.Add(Convert.ToByte(s));
             }
 
@@ -101,7 +101,7 @@ namespace steganography
                             if (flagZeroBits >= 8)
                             {
                                 List<Byte> byteList = new List<Byte>();
-                                for (int b = 0; i < textBits.Length; b += 8)
+                                for (int b = 0; b < textBits.Length; b += 8)
                                 {
                                     try
                                     {

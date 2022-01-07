@@ -29,7 +29,7 @@ namespace steganography
         private void btnSelectPicture_Click(object sender, EventArgs e)
         {
             // image filters  
-            pictureDialog.Filter = "Image Files(*.jpg; *.jpeg; *.gif; *.bmp)|*.jpg; *.jpeg; *.gif; *.bmp";
+            pictureDialog.Filter = "Image Files(*.jpg; *.jpeg; *.gif; *.bmp; *.png)|*.jpg; *.jpeg; *.gif; *.bmp; *.png" ;
             if (pictureDialog.ShowDialog() == DialogResult.OK)
             {
                 // image file path  
@@ -46,6 +46,7 @@ namespace steganography
             Steganogeraphy sg = new Steganogeraphy();
             Image encryptedImage = sg.encrypt_text(image, tbText.Text);
             pb.Image = encryptedImage;
+            string ttt = sg.decrypt_text((Bitmap)encryptedImage);
         }
 
         private void btnSave_Click(object sender, EventArgs e)
