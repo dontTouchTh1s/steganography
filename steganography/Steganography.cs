@@ -46,6 +46,7 @@ namespace steganography
                     {
                         // All of binrary embeded in image, job is done
                         // When all of bits of text embeded, we will add 8 zero to the end of embeded text, its a flag for dectypting
+                        bmp.SetPixel(j, i, Color.FromArgb(pixelRGB[0], pixelRGB[1], pixelRGB[2]));
                         flagZeroBits++;
                         if (flagZeroBits >= 8)
                             // When all 8 zero bits added, jobs is done
