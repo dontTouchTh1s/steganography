@@ -29,72 +29,44 @@ namespace steganography
         /// </summary>
         private void InitializeComponent()
         {
-            this.pb = new System.Windows.Forms.PictureBox();
             this.pictureDialog = new System.Windows.Forms.OpenFileDialog();
-            this.btnSelectPicture = new System.Windows.Forms.Button();
-            this.tbText = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.lblImageName = new System.Windows.Forms.Label();
             this.btnStart = new System.Windows.Forms.Button();
             this.tbPassword = new System.Windows.Forms.TextBox();
             this.lblPassword = new System.Windows.Forms.Label();
-            this.btnSave = new System.Windows.Forms.Button();
             this.savePathDialog = new System.Windows.Forms.FolderBrowserDialog();
-            ((System.ComponentModel.ISupportInitialize)(this.pb)).BeginInit();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.tabControl2 = new System.Windows.Forms.TabControl();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.tabControl2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // pb
-            // 
-            this.pb.Location = new System.Drawing.Point(283, 12);
-            this.pb.Name = "pb";
-            this.pb.Size = new System.Drawing.Size(232, 190);
-            this.pb.TabIndex = 0;
-            this.pb.TabStop = false;
             // 
             // pictureDialog
             // 
             this.pictureDialog.FileName = "openFileDialog1";
             // 
-            // btnSelectPicture
-            // 
-            this.btnSelectPicture.Location = new System.Drawing.Point(12, 42);
-            this.btnSelectPicture.Name = "btnSelectPicture";
-            this.btnSelectPicture.Size = new System.Drawing.Size(127, 29);
-            this.btnSelectPicture.TabIndex = 1;
-            this.btnSelectPicture.Text = "Select picture";
-            this.btnSelectPicture.UseVisualStyleBackColor = true;
-            this.btnSelectPicture.Click += new System.EventHandler(this.btnSelectPicture_Click);
-            // 
-            // tbText
-            // 
-            this.tbText.Location = new System.Drawing.Point(12, 113);
-            this.tbText.Name = "tbText";
-            this.tbText.Size = new System.Drawing.Size(197, 23);
-            this.tbText.TabIndex = 2;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 86);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(197, 15);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Write your Text to embed im picture";
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 22);
+            this.label2.Location = new System.Drawing.Point(9, 10);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(87, 15);
+            this.label2.Size = new System.Drawing.Size(211, 15);
             this.label2.TabIndex = 4;
-            this.label2.Text = "Choose picture";
+            this.label2.Text = "Select a picture for embeding text in it.";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // lblImageName
             // 
             this.lblImageName.AutoSize = true;
-            this.lblImageName.Location = new System.Drawing.Point(283, 215);
+            this.lblImageName.Location = new System.Drawing.Point(332, 203);
             this.lblImageName.Name = "lblImageName";
             this.lblImageName.Size = new System.Drawing.Size(10, 15);
             this.lblImageName.TabIndex = 5;
@@ -102,7 +74,7 @@ namespace steganography
             // 
             // btnStart
             // 
-            this.btnStart.Location = new System.Drawing.Point(12, 242);
+            this.btnStart.Location = new System.Drawing.Point(9, 404);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(75, 23);
             this.btnStart.TabIndex = 6;
@@ -112,7 +84,7 @@ namespace steganography
             // 
             // tbPassword
             // 
-            this.tbPassword.Location = new System.Drawing.Point(13, 189);
+            this.tbPassword.Location = new System.Drawing.Point(10, 353);
             this.tbPassword.Name = "tbPassword";
             this.tbPassword.Size = new System.Drawing.Size(100, 23);
             this.tbPassword.TabIndex = 7;
@@ -120,15 +92,81 @@ namespace steganography
             // lblPassword
             // 
             this.lblPassword.AutoSize = true;
-            this.lblPassword.Location = new System.Drawing.Point(13, 154);
+            this.lblPassword.Location = new System.Drawing.Point(9, 335);
             this.lblPassword.Name = "lblPassword";
             this.lblPassword.Size = new System.Drawing.Size(245, 15);
             this.lblPassword.TabIndex = 8;
             this.lblPassword.Text = "Enter a password flag for extracting (optimal)";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(332, 6);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(200, 200);
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(10, 189);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(127, 29);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "Select picture";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.btnSelectPicture_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(9, 243);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(523, 51);
+            this.textBox1.TabIndex = 2;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(10, 225);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(197, 15);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Write your Text to embed im picture";
+            // 
+            // tabControl2
+            // 
+            this.tabControl2.Controls.Add(this.tabPage3);
+            this.tabControl2.Controls.Add(this.tabPage4);
+            this.tabControl2.Location = new System.Drawing.Point(0, 0);
+            this.tabControl2.Name = "tabControl2";
+            this.tabControl2.SelectedIndex = 0;
+            this.tabControl2.Size = new System.Drawing.Size(578, 476);
+            this.tabControl2.TabIndex = 10;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.btnSave);
+            this.tabPage3.Controls.Add(this.pictureBox1);
+            this.tabPage3.Controls.Add(this.lblPassword);
+            this.tabPage3.Controls.Add(this.button1);
+            this.tabPage3.Controls.Add(this.tbPassword);
+            this.tabPage3.Controls.Add(this.textBox1);
+            this.tabPage3.Controls.Add(this.label2);
+            this.tabPage3.Controls.Add(this.btnStart);
+            this.tabPage3.Controls.Add(this.label3);
+            this.tabPage3.Controls.Add(this.lblImageName);
+            this.tabPage3.Location = new System.Drawing.Point(4, 24);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(570, 448);
+            this.tabPage3.TabIndex = 0;
+            this.tabPage3.Text = "embed";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            this.tabPage3.Click += new System.EventHandler(this.tabPage3_Click);
+            // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(283, 242);
+            this.btnSave.Location = new System.Drawing.Point(497, 404);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(49, 23);
             this.btnSave.TabIndex = 9;
@@ -136,44 +174,49 @@ namespace steganography
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
+            // tabPage4
+            // 
+            this.tabPage4.Location = new System.Drawing.Point(4, 24);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(570, 448);
+            this.tabPage4.TabIndex = 1;
+            this.tabPage4.Text = "extract";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(527, 277);
-            this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.lblPassword);
-            this.Controls.Add(this.tbPassword);
-            this.Controls.Add(this.btnStart);
-            this.Controls.Add(this.lblImageName);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.tbText);
-            this.Controls.Add(this.btnSelectPicture);
-            this.Controls.Add(this.pb);
+            this.ClientSize = new System.Drawing.Size(585, 473);
+            this.Controls.Add(this.tabControl2);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pb)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.tabControl2.ResumeLayout(false);
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.PictureBox pb;
         private System.Windows.Forms.OpenFileDialog pictureDialog;
-        private System.Windows.Forms.Button btnSelectPicture;
-        private System.Windows.Forms.TextBox tbText;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblImageName;
         private System.Windows.Forms.Button btnStart;
         private System.Windows.Forms.TextBox tbPassword;
         private System.Windows.Forms.Label lblPassword;
-        private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.FolderBrowserDialog savePathDialog;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TabControl tabControl2;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.TabPage tabPage4;
     }
 }
 
