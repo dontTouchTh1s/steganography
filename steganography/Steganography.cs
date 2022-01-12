@@ -17,18 +17,18 @@ namespace steganography
             }
             string binrary = sb.ToString();
 
+            // Convert string bits to an array
             List<byte> binraryText = new List<byte>();
             foreach (char ch in binrary)
             {
-                string s = ch.ToString();
-                binraryText.Add(Convert.ToByte(s));
+                binraryText.Add(Convert.ToByte(ch.ToString()));
             }
 
 
             Bitmap bmp = (Bitmap)image;
 
             int currentBinraryIndex = 0;
-            int flagZeroBits = 0;
+            int flagBits = 0;
             for (int i = 0; i < bmp.Height; i++)
             {
                 for (int j = 0; j < bmp.Width; j++)
@@ -47,9 +47,9 @@ namespace steganography
                         // All of binrary embeded in image, job is done
                         // When all of bits of text embeded, we will add 8 zero to the end of embeded text, its a flag for dectypting
                         bmp.SetPixel(j, i, Color.FromArgb(pixelRGB[0], pixelRGB[1], pixelRGB[2]));
-                        flagZeroBits++;
-                        if (flagZeroBits >= 8)
-                            // When all 8 zero bits added, jobs is done
+                        flagBits++;
+                        // When all 8 zero bits added, jobs is done
+                        if (flagBits >= 8)
                             return bmp;
                         continue;
                     }
@@ -77,10 +77,11 @@ namespace steganography
             return bmp;
 
         }
-        public String decrypt_text(Bitmap bmp)
+        public String decrypt_text(Image image)
         {
             string textBits = "";
-            int flagZeroBits = 0;
+            Bitmap bmp = (Bitmap)image;
+            int flagBits = 0;
             for (int i = 0; i < bmp.Height; i++)
             {
                 for (int j = 0; j < bmp.Width; j++)
@@ -98,8 +99,8 @@ namespace steganography
                     {
                         if (pixelRGB[c] % 2 == 0)
                         {
-                            flagZeroBits++;
-                            if (flagZeroBits >= 8)
+                            flagBits++;
+                            if (flagBits >= 8)
                             {
                                 List<Byte> byteList = new List<Byte>();
                                 for (int b = 0; b < textBits.Length; b += 8)
@@ -115,7 +116,7 @@ namespace steganography
                             }
                         }
                         else
-                            flagZeroBits = 0;
+                            flagBits = 0;
                         textBits += pixelRGB[c] % 2;
                     }
                 }
