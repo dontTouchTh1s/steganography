@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Drawing.Imaging;
+using System.Windows.Forms;
 
 namespace steganography
 {
@@ -21,10 +15,6 @@ namespace steganography
 
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
 
         private void btnSelectPicture_Click(object sender, EventArgs e)
         {
@@ -45,8 +35,7 @@ namespace steganography
         {
             Steganogeraphy sg = new Steganogeraphy();
             Image encryptedImage = sg.encrypt_text(image, tbText.Text);
-            pb.Image = encryptedImage;
-            string ttt = sg.decrypt_text((Bitmap)encryptedImage);
+            pbResult.Image = encryptedImage;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -54,13 +43,33 @@ namespace steganography
             if (savePathDialog.ShowDialog() == DialogResult.OK)
             {
                 string path = savePathDialog.SelectedPath;
-                image.Save(path);
+                ImageFormat f = image.RawFormat;
+                image.Save(path + "/result.png", ImageFormat.Png);
             }
         }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
 
+        private void btnExtract_Click(object sender, EventArgs e)
+        {
+            Image selectedImage = pbExtract.Image;
+            Steganogeraphy sg = new Steganogeraphy();
+            string result = sg.decrypt_text(selectedImage);
+            tbExtractedText.Text = result;
+        }
+
+        private void btnChoosePicture_Click(object sender, EventArgs e)
+        {
+            // image filters  
+            pictureDialog.Filter = "Image Files(*.jpg; *.jpeg; *.gif; *.bmp; *.png)|*.jpg; *.jpeg; *.gif; *.bmp; *.png";
+            if (pictureDialog.ShowDialog() == DialogResult.OK)
+            {
+                // image file path  
+                imagePath = lblImageName.Text = pictureDialog.FileName;
+                Image image = Image.FromFile(imagePath);
+
+                // display image in picture box  
+                pbExtract.Image = image;
+            }
         }
     }
 
