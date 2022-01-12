@@ -33,20 +33,31 @@ namespace steganography
             this.label2 = new System.Windows.Forms.Label();
             this.lblImageName = new System.Windows.Forms.Label();
             this.btnStart = new System.Windows.Forms.Button();
-            this.tbPassword = new System.Windows.Forms.TextBox();
-            this.lblPassword = new System.Windows.Forms.Label();
             this.savePathDialog = new System.Windows.Forms.FolderBrowserDialog();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pb = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tbText = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.lblPictureInfo = new System.Windows.Forms.Label();
+            this.pbResult = new System.Windows.Forms.PictureBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.btnExtract = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.lblExtractInfo = new System.Windows.Forms.Label();
+            this.btnCopy = new System.Windows.Forms.Button();
+            this.tbExtractedText = new System.Windows.Forms.TextBox();
+            this.btnChoosePicture = new System.Windows.Forms.Button();
+            this.pbExtract = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.pb)).BeginInit();
             this.tabControl2.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbResult)).BeginInit();
+            this.tabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbExtract)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureDialog
@@ -66,7 +77,7 @@ namespace steganography
             // lblImageName
             // 
             this.lblImageName.AutoSize = true;
-            this.lblImageName.Location = new System.Drawing.Point(332, 203);
+            this.lblImageName.Location = new System.Drawing.Point(366, 189);
             this.lblImageName.Name = "lblImageName";
             this.lblImageName.Size = new System.Drawing.Size(10, 15);
             this.lblImageName.TabIndex = 5;
@@ -74,7 +85,7 @@ namespace steganography
             // 
             // btnStart
             // 
-            this.btnStart.Location = new System.Drawing.Point(9, 404);
+            this.btnStart.Location = new System.Drawing.Point(10, 419);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(75, 23);
             this.btnStart.TabIndex = 6;
@@ -82,33 +93,17 @@ namespace steganography
             this.btnStart.UseVisualStyleBackColor = true;
             this.btnStart.Click += new System.EventHandler(this.button1_Click);
             // 
-            // tbPassword
+            // pb
             // 
-            this.tbPassword.Location = new System.Drawing.Point(10, 353);
-            this.tbPassword.Name = "tbPassword";
-            this.tbPassword.Size = new System.Drawing.Size(100, 23);
-            this.tbPassword.TabIndex = 7;
-            // 
-            // lblPassword
-            // 
-            this.lblPassword.AutoSize = true;
-            this.lblPassword.Location = new System.Drawing.Point(9, 335);
-            this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(245, 15);
-            this.lblPassword.TabIndex = 8;
-            this.lblPassword.Text = "Enter a password flag for extracting (optimal)";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Location = new System.Drawing.Point(332, 6);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(200, 200);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.pb.Location = new System.Drawing.Point(366, 3);
+            this.pb.Name = "pb";
+            this.pb.Size = new System.Drawing.Size(180, 180);
+            this.pb.TabIndex = 0;
+            this.pb.TabStop = false;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(10, 189);
+            this.button1.Location = new System.Drawing.Point(9, 175);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(127, 29);
             this.button1.TabIndex = 1;
@@ -116,18 +111,18 @@ namespace steganography
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.btnSelectPicture_Click);
             // 
-            // textBox1
+            // tbText
             // 
-            this.textBox1.Location = new System.Drawing.Point(9, 243);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(523, 51);
-            this.textBox1.TabIndex = 2;
+            this.tbText.Location = new System.Drawing.Point(9, 225);
+            this.tbText.Multiline = true;
+            this.tbText.Name = "tbText";
+            this.tbText.Size = new System.Drawing.Size(348, 162);
+            this.tbText.TabIndex = 2;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(10, 225);
+            this.label3.Location = new System.Drawing.Point(10, 207);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(197, 15);
             this.label3.TabIndex = 3;
@@ -140,17 +135,17 @@ namespace steganography
             this.tabControl2.Location = new System.Drawing.Point(0, 0);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(578, 476);
+            this.tabControl2.Size = new System.Drawing.Size(559, 476);
             this.tabControl2.TabIndex = 10;
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.lblPictureInfo);
+            this.tabPage3.Controls.Add(this.pbResult);
             this.tabPage3.Controls.Add(this.btnSave);
-            this.tabPage3.Controls.Add(this.pictureBox1);
-            this.tabPage3.Controls.Add(this.lblPassword);
+            this.tabPage3.Controls.Add(this.pb);
             this.tabPage3.Controls.Add(this.button1);
-            this.tabPage3.Controls.Add(this.tbPassword);
-            this.tabPage3.Controls.Add(this.textBox1);
+            this.tabPage3.Controls.Add(this.tbText);
             this.tabPage3.Controls.Add(this.label2);
             this.tabPage3.Controls.Add(this.btnStart);
             this.tabPage3.Controls.Add(this.label3);
@@ -158,45 +153,146 @@ namespace steganography
             this.tabPage3.Location = new System.Drawing.Point(4, 24);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(570, 448);
+            this.tabPage3.Size = new System.Drawing.Size(551, 448);
             this.tabPage3.TabIndex = 0;
             this.tabPage3.Text = "embed";
             this.tabPage3.UseVisualStyleBackColor = true;
             this.tabPage3.Click += new System.EventHandler(this.tabPage3_Click);
             // 
+            // lblPictureInfo
+            // 
+            this.lblPictureInfo.AutoSize = true;
+            this.lblPictureInfo.Location = new System.Drawing.Point(363, 393);
+            this.lblPictureInfo.Name = "lblPictureInfo";
+            this.lblPictureInfo.Size = new System.Drawing.Size(10, 15);
+            this.lblPictureInfo.TabIndex = 11;
+            this.lblPictureInfo.Text = ":";
+            // 
+            // pbResult
+            // 
+            this.pbResult.Location = new System.Drawing.Point(366, 207);
+            this.pbResult.Name = "pbResult";
+            this.pbResult.Size = new System.Drawing.Size(180, 180);
+            this.pbResult.TabIndex = 10;
+            this.pbResult.TabStop = false;
+            this.pbResult.Click += new System.EventHandler(this.pbResult_Click);
+            // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(497, 404);
+            this.btnSave.Location = new System.Drawing.Point(422, 414);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(49, 23);
+            this.btnSave.Size = new System.Drawing.Size(124, 23);
             this.btnSave.TabIndex = 9;
-            this.btnSave.Text = "save";
+            this.btnSave.Text = "Save result picture";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.btnExtract);
+            this.tabPage4.Controls.Add(this.label4);
+            this.tabPage4.Controls.Add(this.lblExtractInfo);
+            this.tabPage4.Controls.Add(this.btnCopy);
+            this.tabPage4.Controls.Add(this.tbExtractedText);
+            this.tabPage4.Controls.Add(this.btnChoosePicture);
+            this.tabPage4.Controls.Add(this.pbExtract);
+            this.tabPage4.Controls.Add(this.label1);
             this.tabPage4.Location = new System.Drawing.Point(4, 24);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(570, 448);
+            this.tabPage4.Size = new System.Drawing.Size(551, 448);
             this.tabPage4.TabIndex = 1;
             this.tabPage4.Text = "extract";
             this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // btnExtract
+            // 
+            this.btnExtract.Location = new System.Drawing.Point(7, 417);
+            this.btnExtract.Name = "btnExtract";
+            this.btnExtract.Size = new System.Drawing.Size(75, 23);
+            this.btnExtract.TabIndex = 7;
+            this.btnExtract.Text = "Extract";
+            this.btnExtract.UseVisualStyleBackColor = true;
+            this.btnExtract.Click += new System.EventHandler(this.btnExtract_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(9, 215);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(82, 15);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "Extracted text:";
+            // 
+            // lblExtractInfo
+            // 
+            this.lblExtractInfo.AutoSize = true;
+            this.lblExtractInfo.Location = new System.Drawing.Point(345, 215);
+            this.lblExtractInfo.Name = "lblExtractInfo";
+            this.lblExtractInfo.Size = new System.Drawing.Size(0, 15);
+            this.lblExtractInfo.TabIndex = 5;
+            // 
+            // btnCopy
+            // 
+            this.btnCopy.Location = new System.Drawing.Point(470, 419);
+            this.btnCopy.Name = "btnCopy";
+            this.btnCopy.Size = new System.Drawing.Size(75, 23);
+            this.btnCopy.TabIndex = 4;
+            this.btnCopy.Text = "Copy";
+            this.btnCopy.UseVisualStyleBackColor = true;
+            // 
+            // tbExtractedText
+            // 
+            this.tbExtractedText.Location = new System.Drawing.Point(9, 240);
+            this.tbExtractedText.Multiline = true;
+            this.tbExtractedText.Name = "tbExtractedText";
+            this.tbExtractedText.Size = new System.Drawing.Size(536, 171);
+            this.tbExtractedText.TabIndex = 3;
+            // 
+            // btnChoosePicture
+            // 
+            this.btnChoosePicture.Location = new System.Drawing.Point(9, 182);
+            this.btnChoosePicture.Name = "btnChoosePicture";
+            this.btnChoosePicture.Size = new System.Drawing.Size(75, 23);
+            this.btnChoosePicture.TabIndex = 2;
+            this.btnChoosePicture.Text = "Choose picture";
+            this.btnChoosePicture.UseVisualStyleBackColor = true;
+            this.btnChoosePicture.Click += new System.EventHandler(this.btnChoosePicture_Click);
+            // 
+            // pbExtract
+            // 
+            this.pbExtract.Location = new System.Drawing.Point(345, 6);
+            this.pbExtract.Name = "pbExtract";
+            this.pbExtract.Size = new System.Drawing.Size(200, 200);
+            this.pbExtract.TabIndex = 1;
+            this.pbExtract.TabStop = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(9, 7);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(154, 15);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Select pictuer to extract text";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(585, 473);
+            this.ClientSize = new System.Drawing.Size(556, 473);
             this.Controls.Add(this.tabControl2);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Steganography";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb)).EndInit();
             this.tabControl2.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbResult)).EndInit();
+            this.tabPage4.ResumeLayout(false);
+            this.tabPage4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbExtract)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -206,17 +302,25 @@ namespace steganography
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblImageName;
         private System.Windows.Forms.Button btnStart;
-        private System.Windows.Forms.TextBox tbPassword;
-        private System.Windows.Forms.Label lblPassword;
         private System.Windows.Forms.FolderBrowserDialog savePathDialog;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pb;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tbText;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TabControl tabControl2;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.Label lblPictureInfo;
+        private System.Windows.Forms.PictureBox pbResult;
+        private System.Windows.Forms.PictureBox pbExtract;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnChoosePicture;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblExtractInfo;
+        private System.Windows.Forms.Button btnCopy;
+        private System.Windows.Forms.TextBox tbExtractedText;
+        private System.Windows.Forms.Button btnExtract;
     }
 }
 
