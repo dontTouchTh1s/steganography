@@ -72,7 +72,6 @@ namespace steganography
             this.label2.Size = new System.Drawing.Size(211, 15);
             this.label2.TabIndex = 4;
             this.label2.Text = "Select a picture for embeding text in it.";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // lblImageName
             // 
@@ -157,7 +156,6 @@ namespace steganography
             this.tabPage3.TabIndex = 0;
             this.tabPage3.Text = "embed";
             this.tabPage3.UseVisualStyleBackColor = true;
-            this.tabPage3.Click += new System.EventHandler(this.tabPage3_Click);
             // 
             // lblPictureInfo
             // 
@@ -175,7 +173,6 @@ namespace steganography
             this.pbResult.Size = new System.Drawing.Size(180, 180);
             this.pbResult.TabIndex = 10;
             this.pbResult.TabStop = false;
-            this.pbResult.Click += new System.EventHandler(this.pbResult_Click);
             // 
             // btnSave
             // 
@@ -284,7 +281,6 @@ namespace steganography
             this.Controls.Add(this.tabControl2);
             this.Name = "Form1";
             this.Text = "Steganography";
-            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pb)).EndInit();
             this.tabControl2.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
