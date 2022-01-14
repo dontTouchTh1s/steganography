@@ -40,7 +40,6 @@ namespace steganography
             this.label3 = new System.Windows.Forms.Label();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.lblPictureInfo = new System.Windows.Forms.Label();
             this.pbResult = new System.Windows.Forms.PictureBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.tabPage4 = new System.Windows.Forms.TabPage();
@@ -97,6 +96,7 @@ namespace steganography
             this.pb.Location = new System.Drawing.Point(366, 3);
             this.pb.Name = "pb";
             this.pb.Size = new System.Drawing.Size(180, 180);
+            this.pb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pb.TabIndex = 0;
             this.pb.TabStop = false;
             // 
@@ -139,7 +139,6 @@ namespace steganography
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.lblPictureInfo);
             this.tabPage3.Controls.Add(this.pbResult);
             this.tabPage3.Controls.Add(this.btnSave);
             this.tabPage3.Controls.Add(this.pb);
@@ -157,25 +156,18 @@ namespace steganography
             this.tabPage3.Text = "embed";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // lblPictureInfo
-            // 
-            this.lblPictureInfo.AutoSize = true;
-            this.lblPictureInfo.Location = new System.Drawing.Point(363, 393);
-            this.lblPictureInfo.Name = "lblPictureInfo";
-            this.lblPictureInfo.Size = new System.Drawing.Size(10, 15);
-            this.lblPictureInfo.TabIndex = 11;
-            this.lblPictureInfo.Text = ":";
-            // 
             // pbResult
             // 
             this.pbResult.Location = new System.Drawing.Point(366, 207);
             this.pbResult.Name = "pbResult";
             this.pbResult.Size = new System.Drawing.Size(180, 180);
+            this.pbResult.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbResult.TabIndex = 10;
             this.pbResult.TabStop = false;
             // 
             // btnSave
             // 
+            this.btnSave.Enabled = false;
             this.btnSave.Location = new System.Drawing.Point(422, 414);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(124, 23);
@@ -237,6 +229,7 @@ namespace steganography
             this.btnCopy.TabIndex = 4;
             this.btnCopy.Text = "Copy";
             this.btnCopy.UseVisualStyleBackColor = true;
+            this.btnCopy.Click += new System.EventHandler(this.btnCopy_Click);
             // 
             // tbExtractedText
             // 
@@ -261,6 +254,7 @@ namespace steganography
             this.pbExtract.Location = new System.Drawing.Point(345, 6);
             this.pbExtract.Name = "pbExtract";
             this.pbExtract.Size = new System.Drawing.Size(200, 200);
+            this.pbExtract.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbExtract.TabIndex = 1;
             this.pbExtract.TabStop = false;
             // 
@@ -307,7 +301,6 @@ namespace steganography
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.TabPage tabPage4;
-        private System.Windows.Forms.Label lblPictureInfo;
         private System.Windows.Forms.PictureBox pbResult;
         private System.Windows.Forms.PictureBox pbExtract;
         private System.Windows.Forms.Label label1;
