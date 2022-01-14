@@ -24,7 +24,6 @@ namespace steganography
                 binraryText.Add(Convert.ToByte(ch.ToString()));
             }
 
-
             Bitmap bmp = (Bitmap)image;
 
             int currentBinraryIndex = 0;
