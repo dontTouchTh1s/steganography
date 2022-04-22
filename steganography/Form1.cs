@@ -33,6 +33,9 @@ namespace steganography
 
         private void button1_Click(object sender, EventArgs e)
         {
+            DialogResult d = MessageBox.Show("Please Select a picture befor start.", "Error", MessageBoxButtons.YesNo);
+            if (d == DialogResult.Yes)
+                Application.Exit();
             if (pb.Image == null)
             {
                 MessageBox.Show("Please Select a picture befor start.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
