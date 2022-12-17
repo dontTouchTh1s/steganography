@@ -40,6 +40,7 @@ namespace steganography
             this.label3 = new System.Windows.Forms.Label();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.btnShowBits = new System.Windows.Forms.Button();
             this.pbResult = new System.Windows.Forms.PictureBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.tabPage4 = new System.Windows.Forms.TabPage();
@@ -139,6 +140,7 @@ namespace steganography
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.btnShowBits);
             this.tabPage3.Controls.Add(this.pbResult);
             this.tabPage3.Controls.Add(this.btnSave);
             this.tabPage3.Controls.Add(this.pb);
@@ -155,6 +157,16 @@ namespace steganography
             this.tabPage3.TabIndex = 0;
             this.tabPage3.Text = "embed";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // btnShowBits
+            // 
+            this.btnShowBits.Location = new System.Drawing.Point(142, 175);
+            this.btnShowBits.Name = "btnShowBits";
+            this.btnShowBits.Size = new System.Drawing.Size(85, 29);
+            this.btnShowBits.TabIndex = 11;
+            this.btnShowBits.Text = "Show bits";
+            this.btnShowBits.UseVisualStyleBackColor = true;
+            this.btnShowBits.Click += new System.EventHandler(this.btnShowBits_Click);
             // 
             // pbResult
             // 
@@ -310,6 +322,7 @@ namespace steganography
         private System.Windows.Forms.Button btnCopy;
         private System.Windows.Forms.TextBox tbExtractedText;
         private System.Windows.Forms.Button btnExtract;
+        private System.Windows.Forms.Button btnShowBits;
     }
 }
 

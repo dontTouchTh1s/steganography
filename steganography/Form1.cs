@@ -7,35 +7,30 @@ namespace steganography
 {
     public partial class Form1 : Form
     {
-        public string imagePath;
-        public Image image;
+        private string _imagePath;
+        private Image _image;
+        private Steganogeraphy sg;
         public Form1()
         {
             InitializeComponent();
-
+            sg = new Steganogeraphy();
         }
-
 
         private void btnSelectPicture_Click(object sender, EventArgs e)
         {
             // image filters  
             pictureDialog.Filter = "Image Files(*.jpg; *.jpeg; *.gif; *.bmp; *.png)|*.jpg; *.jpeg; *.gif; *.bmp; *.png" ;
-            if (pictureDialog.ShowDialog() == DialogResult.OK)
-            {
-                // image file path  
-                imagePath = lblImageName.Text = pictureDialog.FileName;
-                image = Image.FromFile(imagePath);
+            if (pictureDialog.ShowDialog() != DialogResult.OK) return;
+            // image file path  
+            _imagePath = lblImageName.Text = pictureDialog.FileName;
+            _image = Image.FromFile(_imagePath);
 
-                // display image in picture box  
-                pb.Image = image;
-            }
+            // display image in picture box  
+            pb.Image = _image;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            DialogResult d = MessageBox.Show("Please Select a picture befor start.", "Error", MessageBoxButtons.YesNo);
-            if (d == DialogResult.Yes)
-                Application.Exit();
             if (pb.Image == null)
             {
                 MessageBox.Show("Please Select a picture befor start.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -46,19 +41,16 @@ namespace steganography
                 MessageBox.Show("Please Enter a text to embed befor start.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            Steganogeraphy sg = new Steganogeraphy();
-            Image encryptedImage = sg.encrypt_text(image, tbText.Text);
+            Image encryptedImage = sg.EncryptText(_image, tbText.Text);
             pbResult.Image = encryptedImage;
             btnSave.Enabled = true;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (savePathDialog.ShowDialog() == DialogResult.OK)
-            {
-                string path = savePathDialog.SelectedPath;
-                image.Save(path + "/result.png", ImageFormat.Png);
-            }
+            if (savePathDialog.ShowDialog() != DialogResult.OK) return;
+            string path = savePathDialog.SelectedPath;
+            _image.Save(path + "/result.png", ImageFormat.Png);
         }
 
 
@@ -70,8 +62,7 @@ namespace steganography
                 return;
             }
             Image selectedImage = pbExtract.Image;
-            Steganogeraphy sg = new Steganogeraphy();
-            string result = sg.decrypt_text(selectedImage);
+            string result = sg.DecryptText(selectedImage);
             tbExtractedText.Text = result;
         }
 
@@ -82,17 +73,28 @@ namespace steganography
             if (pictureDialog.ShowDialog() == DialogResult.OK)
             {
                 // image file path  
-                imagePath = lblImageName.Text = pictureDialog.FileName;
-                Image image = Image.FromFile(imagePath);
+                _imagePath = lblImageName.Text = pictureDialog.FileName;
+                Image image = Image.FromFile(_imagePath);
 
                 // display image in picture box  
                 pbExtract.Image = image;
+
             }
         }
 
         private void btnCopy_Click(object sender, EventArgs e)
         {
             Clipboard.SetText(tbExtractedText.Text);
+        }
+
+        private void btnShowBits_Click(object sender, EventArgs e)
+        {
+            if (pb.Image == null)
+            {
+                MessageBox.Show("Please Select a picture befor start.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            tbText.Text = Steganogeraphy.GetImageBits(pb.Image);
         }
     }
 
